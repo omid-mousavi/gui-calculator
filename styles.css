@@ -33,4 +33,34 @@
 
 .buttons-div {
   flex: 1 1 auto;
+  display: flex;
+  text-align: center;
+  padding: 8px;
+}
+
+
+.number-buttons {
+  flex: 2 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.number-rows {
+  flex: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.numbers {
+  flex: auto;
+  border: 1px solid #000;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.operate-buttons {
+  flex: auto;
 }
