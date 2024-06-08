@@ -52,11 +52,12 @@
   gap: 10px;
 }
 
-.numbers {
-  flex: auto;
+button {
   border: 1px solid #000;
   border-radius: 10px;
+  cursor: pointer;
   display: flex;
+  flex: auto;
   justify-content: center;
   align-items: center;
 }
