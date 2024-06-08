@@ -1,0 +1,27 @@
+* {
+  font-family:'Courier New', Courier, monospace;
+  color: #000;
+}
+
+.body-div {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator-div {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 350px;
+  border: 2px solid #000;
+}
+
+.calculator-div .operate-div {
+  flex: auto;
+}
+
+.buttons-div {
+  flex: 4 1 auto;
+}
