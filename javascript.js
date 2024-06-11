@@ -29,6 +29,7 @@ let firstNumber = '', secondNumber = '', operator = '';
 
 const displayDiv = document.querySelector('.display-div');
 const oneToNine = document.querySelectorAll('.one-to-nine');
+const zeroButton = document.querySelector('.zero');
 const multiplyButton = document.querySelector('.multiply');
 const equalButton = document.querySelector('.equal');
 
@@ -41,9 +42,23 @@ oneToNine.forEach(element => {
     } else {
       firstNumber = eve.target.textContent;
     }
-    displayDiv.textContent += eve.target.textContent;
+    if(displayDiv.textContent === '0') {
+      displayDiv.textContent = eve.target.textContent;
+    } else {
+      displayDiv.textContent += eve.target.textContent;
+    }
   })
-})
+});
+zeroButton.addEventListener('click', eve => {
+  if(firstNumber !== '') {
+    secondNumber = eve.target.textContent;
+  } else {
+    firstNumber = eve.target.textContent;
+  }
+  if(displayDiv.textContent !== '0') {
+    displayDiv.textContent += eve.target.textContent;
+  }
+});
 
 
 multiplyButton.addEventListener('click', eve => {
