@@ -14,7 +14,12 @@ function operate(firstNum, secondNum, operator) {
       displayDiv.textContent = firstNum * secondNum;
       break;
     case '/':
-      displayDiv.textContent = firstNum / secondNum;
+      if(secondNum !== 0) {
+        displayDiv.textContent = firstNum / secondNum;
+      } else {
+        alert('can\'t divide with 0!');
+        secondNum = '';
+      }
       break;
     case '+':
       displayDiv.textContent = firstNum + secondNum;
@@ -31,7 +36,7 @@ let onceOperator = false;
 const displayDiv = document.querySelector('.display-div');
 const oneToNine = document.querySelectorAll('.one-to-nine');
 const zeroButton = document.querySelector('.zero');
-const multiplyButton = document.querySelector('.multiply');
+const operatorButtons = document.querySelectorAll('.operator');
 const equalButton = document.querySelector('.equal');
 
 
@@ -62,11 +67,13 @@ zeroButton.addEventListener('click', eve => {
 });
 
 
-multiplyButton.addEventListener('click', eve => {
-  operator = eve.target.textContent;
-  firstNumber = displayDiv.textContent;
-  displayDiv.textContent = '0';
-  onceOperator = true;
+operatorButtons.forEach(element => {
+  element.addEventListener('click', eve => {
+    operator = eve.target.textContent;
+    firstNumber = displayDiv.textContent;
+    displayDiv.textContent = '0';
+    onceOperator = true;
+  });
 });
 
 equalButton.addEventListener('click', () => {
