@@ -29,6 +29,11 @@ function operate(firstNum, secondNum, operator) {
       break;
   }
 }
+function resetCalculator() {
+  firstNumber = secondNumber = operator = '';
+  onceOperator = false;
+  displayDiv.textContent = 0;
+}
 
 let firstNumber = '', secondNumber = '', operator = '';
 let onceOperator = false;
@@ -37,6 +42,7 @@ const displayDiv = document.querySelector('.display-div');
 const oneToNine = document.querySelectorAll('.one-to-nine');
 const zeroButton = document.querySelector('.zero');
 const operatorButtons = document.querySelectorAll('.operator');
+const clearButton = document.querySelector('.clear');
 const equalButton = document.querySelector('.equal');
 
 
@@ -85,3 +91,4 @@ equalButton.addEventListener('click', () => {
     alert('Enter second number!');
   }
 })
+clearButton.addEventListener('click', resetCalculator);
