@@ -39,9 +39,9 @@ const equalButton = document.querySelector('.equal');
 oneToNine.forEach(element => {
   element.addEventListener('click', eve => {
     if(onceOperator) {
-      secondNumber = eve.target.textContent;
+      secondNumber += eve.target.textContent;
     } else {
-      firstNumber = eve.target.textContent;
+      firstNumber += eve.target.textContent;
     }
     if(displayDiv.textContent === '0') {
       displayDiv.textContent = eve.target.textContent;
@@ -64,10 +64,17 @@ zeroButton.addEventListener('click', eve => {
 
 multiplyButton.addEventListener('click', eve => {
   operator = eve.target.textContent;
-  onceOperator = !onceOperator;
-})
+  firstNumber = displayDiv.textContent;
+  displayDiv.textContent = '0';
+  onceOperator = true;
+});
+
 equalButton.addEventListener('click', () => {
   if(firstNumber !== '' && secondNumber !== '' && operator !== '') {
     operate(firstNumber, secondNumber, operator);
+    secondNumber = '';
+    firstNumber = displayDiv.textContent;
+  } else {
+    alert('Enter second number!');
   }
 })
