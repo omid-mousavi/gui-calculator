@@ -42,6 +42,7 @@ const displayDiv = document.querySelector('.display-div');
 const oneToNine = document.querySelectorAll('.one-to-nine');
 const zeroButton = document.querySelector('.zero');
 const operatorButtons = document.querySelectorAll('.operator');
+const decimalPoint = document.querySelector('.decimal-point');
 const clearButton = document.querySelector('.clear');
 const equalButton = document.querySelector('.equal');
 
@@ -61,6 +62,7 @@ oneToNine.forEach(element => {
     }
   })
 });
+
 zeroButton.addEventListener('click', eve => {
   if(onceOperator) {
     secondNumber = eve.target.textContent;
@@ -82,6 +84,12 @@ operatorButtons.forEach(element => {
   });
 });
 
+decimalPoint.addEventListener('click', (eve) => {
+  if(!displayDiv.textContent.includes('.')) {
+    displayDiv.textContent += '.';
+  }
+});
+
 equalButton.addEventListener('click', () => {
   if(firstNumber !== '' && secondNumber !== '' && operator !== '') {
     operate(firstNumber, secondNumber, operator);
@@ -90,5 +98,6 @@ equalButton.addEventListener('click', () => {
   } else {
     alert('Enter second number!');
   }
-})
+});
+
 clearButton.addEventListener('click', resetCalculator);
