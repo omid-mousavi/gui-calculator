@@ -34,6 +34,16 @@ function resetCalculator() {
   onceOperator = false;
   displayDiv.textContent = 0;
 }
+function backspace() {
+  let displayText = displayDiv.textContent;
+  if(displayText.length === 1) {
+    displayDiv.textContent = '0';
+  } else {
+    displayText = displayText.split('');
+    displayText.pop();
+    displayDiv.textContent = displayText.join('');
+  }
+}
 
 let firstNumber = '', secondNumber = '', operator = '';
 let onceOperator = false;
@@ -43,6 +53,7 @@ const oneToNine = document.querySelectorAll('.one-to-nine');
 const zeroButton = document.querySelector('.zero');
 const operatorButtons = document.querySelectorAll('.operator');
 const decimalPoint = document.querySelector('.decimal-point');
+const backspaceButton = document.querySelector('.backspace');
 const clearButton = document.querySelector('.clear');
 const equalButton = document.querySelector('.equal');
 
@@ -51,7 +62,12 @@ const equalButton = document.querySelector('.equal');
 oneToNine.forEach(element => {
   element.addEventListener('click', eve => {
     if(onceOperator) {
-      secondNumber += eve.target.textContent;
+      // secondNumber += eve.target.textContent;
+      if(secondNumber !== '0') {
+        secondNumber += eve.target.textContent;
+      } else {
+        secondNumber = eve.target.textContent;
+      }
     } else {
       firstNumber += eve.target.textContent;
     }
@@ -65,7 +81,11 @@ oneToNine.forEach(element => {
 
 zeroButton.addEventListener('click', eve => {
   if(onceOperator) {
-    secondNumber = eve.target.textContent;
+    if(secondNumber !== '0') {
+      secondNumber += eve.target.textContent;
+    } else {
+      secondNumber = '0';
+    }
   } else {
     firstNumber = eve.target.textContent;
   }
@@ -84,7 +104,7 @@ operatorButtons.forEach(element => {
   });
 });
 
-decimalPoint.addEventListener('click', (eve) => {
+decimalPoint.addEventListener('click', () => {
   if(!displayDiv.textContent.includes('.')) {
     displayDiv.textContent += '.';
   }
@@ -101,3 +121,7 @@ equalButton.addEventListener('click', () => {
 });
 
 clearButton.addEventListener('click', resetCalculator);
+
+backspaceButton.addEventListener('click', () => {
+  backspace();
+});
